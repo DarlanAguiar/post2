@@ -175,6 +175,18 @@ textarea{
     display: block;
 }
 
+.data{
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    
+}
+
+.label-data{
+    font-size: .9em;
+    color: white;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+}
 
 
 .botoes-deslizante{
@@ -401,6 +413,13 @@ h4{
     margin-right: 2px;
     cursor: pointer;
 }
+
+.data-card-edicao{
+    font-size: .4em;
+    width: fit-content;
+    margin-right: auto;
+}
+
 
 
 

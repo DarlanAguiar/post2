@@ -2,15 +2,11 @@ import { montaCheckList } from "./monta-check.js";
 import { salvarEdicao, removerItem } from "./index2.js";
 import { separaItensChecados } from "./edit-check-list.js";
 
-export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoChecados) {
+export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoChecados, data, dataEdicao) {
 
     let checkList = montaCheckList(itensChecados, itensNaoChecados)
 
-    console.log(checkList)
-
-    console.log(itensChecados)
-    console.log(itensNaoChecados)
-
+   
     let div = document.createElement("div");
     div.classList.add("post-it");
 
@@ -38,6 +34,7 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
     h4titulo.setAttribute("data-id", cursor.value.id);
     h4titulo.setAttribute("contenteditable", true)
     
+    
 
     let pConteudo = document.createElement("p");
     pConteudo.classList.add("texto");
@@ -48,6 +45,17 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
   
     let divBotoes = document.createElement("div");
     divBotoes.classList.add("botao-post-it");
+    
+    let pData = document.createElement("p");
+    pData.classList.add("data-card");
+    pData.setAttribute("contenteditable", true)
+    pData.textContent = data;
+
+    let pDataEdicao = document.createElement("p");
+    pDataEdicao.classList.add("data-card-edicao");
+    pDataEdicao.textContent = dataEdicao;
+
+
 
     divtexto.appendChild(divFilha);
     divtexto.appendChild(h4titulo);
@@ -59,7 +67,11 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
 
     div.appendChild(checkList);
 
+    div.appendChild(pData);
+
     div.appendChild(salvarEdicao);
+
+    div.appendChild(pDataEdicao);
     
     
     return div;
@@ -72,12 +84,28 @@ const editaTudo = (e) => {
     let id = alvo.querySelector(".botao-cancelar").dataset.id;
     let titulo = alvo.querySelector("h4").textContent;
     let conteudo = alvo.querySelector(".texto").textContent;
+    let data = alvo.querySelector(".data-card").textContent;
+
+
+
+
+    var dataED = new Date();
+    var dia = String(dataED. getDate()). padStart(2 ,'0');
+    var mes = String(dataED. getMonth() + 1). padStart(2, '0');
+    var ano = dataED.getFullYear();
+    var hora = dataED.getHours();
+    var minutos = dataED.getMinutes();
+    var dataAtual =`Editado ${dia}/${mes}/${ano} às ${hora}:${minutos}`;
+    
+
+
+
 
     let checkList = alvo.querySelectorAll(".card-item-check");
 
     let checkListSeparado = separaItensChecados(checkList);
 
-    salvarEdicao(id, titulo, conteudo, checkListSeparado[0], checkListSeparado[1])
+    salvarEdicao(id, titulo, conteudo, checkListSeparado[0], checkListSeparado[1], data, dataAtual)
 
 }
 

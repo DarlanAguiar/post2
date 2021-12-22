@@ -1,9 +1,8 @@
 import { botaoIncluir } from "./input-check.js";
-import { montaCheckList } from "./monta-check.js";
-import { criarCard } from "./cria-lembrete.js"
+import { criarCard } from "./cria-lembrete.js";
 import {separaItensChecados} from "./edit-check-list.js"
 
-let localId;
+
 let bancoDeDados;
 let nomeDoBancoDeDados = "BancoDePostit2";
 let nomeDaLista = "listaDeDados2"
@@ -42,14 +41,16 @@ function criaBancoDeDados () {
     }
 }
 
-function salvarDados (conteudoTitulo, lembrete, itensCheck, itensNaoCheck) {
+function salvarDados (conteudoTitulo, lembrete, itensCheck, itensNaoCheck, data, dataEdicao) {
+    
+  
     
    
     let localParaAdicionar = bancoDeDados.transaction([nomeDaLista], "readwrite");
 
     let listaParaAdicionar = localParaAdicionar.objectStore(nomeDaLista);
 
-    let novaMensagem = {titulo: conteudoTitulo, mensagem: lembrete, listaCheck: itensCheck, listaNaoCheck: itensNaoCheck};
+    let novaMensagem = {titulo: conteudoTitulo, mensagem: lembrete, listaCheck: itensCheck, listaNaoCheck: itensNaoCheck, data: data, dataEdicao: dataEdicao};
 
     listaParaAdicionar.add(novaMensagem);
 
@@ -57,7 +58,7 @@ function salvarDados (conteudoTitulo, lembrete, itensCheck, itensNaoCheck) {
 }
 
 
-export function salvarEdicao (id, titulo, conteudo, checados, naoChecados) {
+export function salvarEdicao (id, titulo, conteudo, checados, naoChecados, data, dataAtual) {
 
     let numeroId = Number(id)
     
@@ -75,7 +76,7 @@ export function salvarEdicao (id, titulo, conteudo, checados, naoChecados) {
     //     listaParaAdicionar.put(data);
     // }
 
-    listaParaAdicionar.put({id: numeroId, titulo: titulo, mensagem: conteudo, listaCheck: checados, listaNaoCheck: naoChecados});
+    listaParaAdicionar.put({id: numeroId, titulo: titulo, mensagem: conteudo, listaCheck: checados, listaNaoCheck: naoChecados, data: data, dataEdicao: dataAtual});
     mostrarCardNaTela ();
  
 }
@@ -119,8 +120,10 @@ function mostrarCardNaTela(){
             const conteudo = cursor.value.mensagem;
             const itensChecados = cursor.value.listaCheck;
             const itensNaoChecados = cursor.value.listaNaoCheck;
+            const data = cursor.value.data;
+            const dataEdicao = cursor.value.dataEdicao;
 
-            const card = criarCard(titulo, conteudo, cursor, itensChecados, itensNaoChecados); 
+            const card = criarCard(titulo, conteudo, cursor, itensChecados, itensNaoChecados, data, dataEdicao); 
         
             local.appendChild(card)
 
@@ -139,15 +142,21 @@ function pegarDados(){
     let arrayCheck = document.querySelectorAll(".item-check");
     
     let separados = separaItensChecados(arrayCheck);
-    
+
+    var data = document.querySelector(".data");
+    var dataFormatada = data.value.split("-").reverse().join("-");
+
+    let dataEdicao = ""
+
     document.querySelector("[data-itensCheck]").innerHTML = ""
     
     if(conteudo.length > 0){
         
-        salvarDados(conteudoTitulo, conteudo, separados[0], separados[1]);
+        salvarDados(conteudoTitulo, conteudo, separados[0], separados[1], dataFormatada, dataEdicao);
                
         campoInformacoes.value = ""
         campoTitulo.value = ""
+        data.value = ""
 
     }else{
         
@@ -171,14 +180,28 @@ let campoDigitavelBusca = document.querySelector(".filtro");
 
                 let conteudoTitulo = elemento.querySelector("p").textContent;
                 let conteudoTexto = elemento.querySelector("h4").textContent;
+                let conteudoCheck = elemento.parentNode.querySelectorAll(".card-item-check");
+                let conteudoArray = []
 
-                let conteudoTotal = conteudoTitulo.concat(conteudoTexto);
+                console.log(conteudoCheck[0])
 
-                console.log(conteudoTotal)
+                let conteudoTotalTexto = conteudoTitulo.concat(conteudoTexto);
 
-                let expressao = new RegExp(campoDigitavelBusca.value, "i")
+                conteudoCheck.forEach(item => {
+
+                    let textos = item.textContent;
+                    conteudoArray.push(textos);
+
+                })
+
+                let checkString = conteudoArray.join();
+
+                let conteudoTotal = conteudoTotalTexto.concat(checkString);
+
+                let expressao = new RegExp(campoDigitavelBusca.value, "i");
 
                 if(expressao.test(conteudoTotal)){
+                    
                     elemento.parentNode.classList.remove("invisivel");
                    
                 }else{
@@ -201,6 +224,9 @@ let campoDigitavelBusca = document.querySelector(".filtro");
 document.querySelector(".botao-cancelar").addEventListener("click" ,()=>{
     var campoInformacoes = document.querySelector("[data-mensagem]");
     campoInformacoes.value = "";
+
+    var data = document.querySelector(".data");
+    data.value = ""
 
     const areaDeAviso = document.querySelector(".aviso")
         .classList.remove("visualiza-aviso");

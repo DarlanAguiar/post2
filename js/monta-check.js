@@ -19,7 +19,7 @@ export const montaCheckList = (itensChecados, itensNaoChecados) => {
         pTexto.setAttribute("contenteditable", true);
         pTexto.setAttribute("data-checado", 1);
         pTexto.textContent = elementchecado;
-        pTexto.addEventListener("blur", salvarEdicao)
+       
 
         let divBotoesCheck = document.createElement("div");
         divBotoesCheck.classList.add("card-botoes-check");
@@ -53,7 +53,12 @@ export const montaCheckList = (itensChecados, itensNaoChecados) => {
         pTexto.setAttribute("contenteditable", true);
         pTexto.setAttribute("data-checado", 0);
         pTexto.textContent = elementoNChecado;
-        pTexto.addEventListener("change", minhaFuncao);
+        pTexto.addEventListener("change", (e)=> {
+            let pai = e.parentNode;
+            console.log("oi")
+        }
+        )
+       
 
         let divBotoesCheck = document.createElement("div");
         divBotoesCheck.classList.add("card-botoes-check");
@@ -109,28 +114,3 @@ const removeCheckCard = (e) =>{
 
 }
 
-
-const salvarEdicao = (e) => {
-
-    console.log(e.target);
-
-
-
- /*    const titulo = document.getElementById("titulo-editado").value;
-
-    const lembrete = document.getElementById("mensagem-editada").value;
-
-    let localParaAdicionar = bancoDeDados.transaction([nomeDaLista], "readwrite");
-
-    let listaParaAdicionar = localParaAdicionar.objectStore(nomeDaLista);
-
-   
-   
-
-    listaParaAdicionar.put({id: localId, titulo: titulo, mensagem: lembrete});
-    mostrarCardNaTela ()  */
-}
-
-const minhaFuncao = () =>{
-    console.log("oi")
-}
