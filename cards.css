@@ -4,7 +4,7 @@
 }
 
 .card-div-checar-item{
-    font-size: .8rem;
+    font-size: .95rem;
     margin-bottom: 3px;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .card-riscar-check{
-    width: 10px;
+    width: 15px;
     margin-left: 5px;
     box-shadow: 0 0 2px black;
     text-align: center;
@@ -28,7 +28,7 @@
 }
 .card-apagar-check{
     margin-left: 5px;
-    width: 10px;
+    width: 15px;
     margin-left: 5px;
     box-shadow: 0 0 2px black;
     text-align: center;

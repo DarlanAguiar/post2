@@ -40,8 +40,6 @@ export const botaoIncluir = () => {
         localListaCheck.appendChild(divChecar);
         id++
 
-
-
         
         textoChecar.value = "";
 
