@@ -9,7 +9,7 @@ let nomeDaLista = "listaDeDados2"
 
 function criaBancoDeDados () {
     
-    let requisicao = window.indexedDB.open( nomeDoBancoDeDados, 1);
+    let requisicao = window.indexedDB.open( nomeDoBancoDeDados, 2);
 
     requisicao.onsuccess = (evento) => {
 
@@ -42,10 +42,6 @@ function criaBancoDeDados () {
 }
 
 function salvarDados (conteudoTitulo, lembrete, itensCheck, itensNaoCheck, data, dataEdicao) {
-    
-  
-    
-   
     let localParaAdicionar = bancoDeDados.transaction([nomeDaLista], "readwrite");
 
     let listaParaAdicionar = localParaAdicionar.objectStore(nomeDaLista);
