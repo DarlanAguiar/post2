@@ -12,9 +12,8 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
 
     let salvarEdicao = document.createElement("p");
     salvarEdicao.classList.add("botao-edicao-card");
-    salvarEdicao.textContent = "Salvar"
-    salvarEdicao.addEventListener("click", editaTudo)
-    
+    salvarEdicao.textContent = "Salvar";
+    salvarEdicao.addEventListener("click", editaTudo);
 
 
     let divtexto = document.createElement("div");
@@ -41,14 +40,14 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
     pConteudo.classList.add("filtrar");
     pConteudo.textContent = conteudo;
     pConteudo.setAttribute("data-id", cursor.value.id);
-    pConteudo.setAttribute("contenteditable", true)
+    pConteudo.setAttribute("contenteditable", true);
   
     let divBotoes = document.createElement("div");
     divBotoes.classList.add("botao-post-it");
     
     let pData = document.createElement("p");
     pData.classList.add("data-card");
-    pData.setAttribute("contenteditable", true)
+    pData.setAttribute("contenteditable", true);
     pData.textContent = data;
 
     let pDataEdicao = document.createElement("p");
@@ -105,12 +104,9 @@ const editaTudo = (e) => {
 
     let checkListSeparado = separaItensChecados(checkList);
 
-    salvarEdicao(id, titulo, conteudo, checkListSeparado[0], checkListSeparado[1], data, dataAtual)
+    salvarEdicao(id, titulo, conteudo, checkListSeparado[0], checkListSeparado[1], data, dataAtual);
 
 }
-
-
-
 
 
 const esmaecerItem = (evento) =>{

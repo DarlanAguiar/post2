@@ -9,6 +9,9 @@ export const separaItensChecados = (arrayRecebido) => {
         
         const riscado = item.dataset.checado;
         const texto = item.textContent;
+
+        // const estaChecado = riscado == 1;
+        // arrayValores.push({texto: item.textContent, checked: estaChecado});
         
         if(riscado == 1){
 

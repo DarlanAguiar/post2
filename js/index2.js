@@ -3,6 +3,11 @@ import { criarCard } from "./cria-lembrete.js";
 import {separaItensChecados} from "./edit-check-list.js"
 
 
+// Salvar automaticamente
+// Consertar o onupgradeneeded
+// Enter para adicionar um novo item
+// Validador de data
+
 let bancoDeDados;
 let nomeDoBancoDeDados = "BancoDePostit2";
 let nomeDaLista = "listaDeDados2"
@@ -23,6 +28,9 @@ function criaBancoDeDados () {
     requisicao.onupgradeneeded = (evento) => {
 
         bancoDeDados = evento.target.result;
+        if (bancoDeDados.objectStoreNames.contains(nomeDaLista)) {
+            return;
+        }
 
         const objetoSalvo = bancoDeDados.createObjectStore(nomeDaLista, {
             keyPath: "id",
@@ -53,6 +61,15 @@ function salvarDados (conteudoTitulo, lembrete, itensCheck, itensNaoCheck, data,
     mostrarCardNaTela ()       
 }
 
+// itensCheck = ['um check', 'dois check'];
+// itensNaoCheck = ['tres check', 'quatro check'];
+
+// itens = [
+//     {texto: 'um check', checked: true}, 
+//     {texto: 'dois check', checked: true}, 
+//     {texto: 'tres check', checked: false}, 
+//     {texto: 'quatro check', checked: false},
+// ];
 
 export function salvarEdicao (id, titulo, conteudo, checados, naoChecados, data, dataAtual) {
 
@@ -72,7 +89,15 @@ export function salvarEdicao (id, titulo, conteudo, checados, naoChecados, data,
     //     listaParaAdicionar.put(data);
     // }
 
-    listaParaAdicionar.put({id: numeroId, titulo: titulo, mensagem: conteudo, listaCheck: checados, listaNaoCheck: naoChecados, data: data, dataEdicao: dataAtual});
+    listaParaAdicionar.put({
+        id: numeroId, 
+        titulo: titulo, 
+        mensagem: conteudo, 
+        listaCheck: checados, 
+        listaNaoCheck: naoChecados, 
+        data: data, 
+        dataEdicao: dataAtual
+    });
     mostrarCardNaTela ();
  
 }
@@ -82,7 +107,6 @@ export const removerItem = (eventoClick) => {
 
     setTimeout(function(){
         
-        console.log(eventoClick.target);
     
         const localId = Number(eventoClick.target.getAttribute("data-id"));
     
