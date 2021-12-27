@@ -15,7 +15,7 @@ let nomeDaLista = "listaDeDados2"
 
 function criaBancoDeDados () {
     
-    let requisicao = window.indexedDB.open( nomeDoBancoDeDados, 2);
+    let requisicao = window.indexedDB.open( nomeDoBancoDeDados, 3);
 
     requisicao.onsuccess = (evento) => {
 
@@ -50,14 +50,16 @@ function criaBancoDeDados () {
     }
 }
 
-function salvarDados (conteudoTitulo, lembrete, itensCheck, itensNaoCheck, data, dataEdicao) {
+function salvarDados (conteudoTitulo, lembrete, itens, data, dataEdicao) {
     let localParaAdicionar = bancoDeDados.transaction([nomeDaLista], "readwrite");
 
     let listaParaAdicionar = localParaAdicionar.objectStore(nomeDaLista);
 
-    let novaMensagem = {titulo: conteudoTitulo, mensagem: lembrete, listaCheck: itensCheck, listaNaoCheck: itensNaoCheck, data: data, dataEdicao: dataEdicao};
+    let novaMensagem = {titulo: conteudoTitulo, mensagem: lembrete, listaCheck: itens, data: data, dataEdicao: dataEdicao};
 
     listaParaAdicionar.add(novaMensagem);
+    console.log(itens)
+    
 
     mostrarCardNaTela ()       
 }
@@ -72,7 +74,7 @@ function salvarDados (conteudoTitulo, lembrete, itensCheck, itensNaoCheck, data,
 //     {texto: 'quatro check', checked: false},
 // ];
 
-export function salvarEdicao (id, titulo, conteudo, checados, naoChecados, data, dataAtual) {
+export function salvarEdicao (id, titulo, conteudo, checados, data, dataAtual) {
 
     let numeroId = Number(id)
     
@@ -95,7 +97,6 @@ export function salvarEdicao (id, titulo, conteudo, checados, naoChecados, data,
         titulo: titulo, 
         mensagem: conteudo, 
         listaCheck: checados, 
-        listaNaoCheck: naoChecados, 
         data: data, 
         dataEdicao: dataAtual
     });
@@ -139,11 +140,11 @@ function mostrarCardNaTela(){
             const titulo = cursor.value.titulo;
             const conteudo = cursor.value.mensagem;
             const itensChecados = cursor.value.listaCheck;
-            const itensNaoChecados = cursor.value.listaNaoCheck;
+            
             const data = cursor.value.data;
             const dataEdicao = cursor.value.dataEdicao;
 
-            const card = criarCard(titulo, conteudo, cursor, itensChecados, itensNaoChecados, data, dataEdicao); 
+            const card = criarCard(titulo, conteudo, cursor, itensChecados, data, dataEdicao); 
         
             local.appendChild(card)
 
@@ -172,7 +173,7 @@ function pegarDados(){
     
     if(conteudo.length > 0){
         
-        salvarDados(conteudoTitulo, conteudo, separados[0], separados[1], dataFormatada, dataEdicao);
+        salvarDados(conteudoTitulo, conteudo, separados, dataFormatada, dataEdicao);
                
         campoInformacoes.value = ""
         campoTitulo.value = ""

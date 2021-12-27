@@ -1,9 +1,9 @@
 
 export const separaItensChecados = (arrayRecebido) => {
 
-
-    let arrayValoresChecados = [];
-    let arrayValoresNaoChecados = []
+    let arrayValores = [];
+    /* let arrayValoresChecados = [];
+    let arrayValoresNaoChecados = [] */
 
     arrayRecebido.forEach(item => {
         
@@ -15,22 +15,23 @@ export const separaItensChecados = (arrayRecebido) => {
         
         if(riscado == 1){
 
-            arrayValoresChecados.push(texto);
+            arrayValores.push({texto: `${texto}`, checado: true});
 
         }else{
 
-            arrayValoresNaoChecados.push(texto);
+            arrayValores.push({texto: `${texto}`, checado: false});
             
         }
     
     });
 
-    let arrayJunto = [];
+  /*   let arrayJunto = [];
 
     arrayJunto.push(arrayValoresChecados);
 
     arrayJunto.push(arrayValoresNaoChecados);
 
-    return arrayJunto
+    return arrayJunto */
+    return arrayValores
 
 }

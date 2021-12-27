@@ -4,7 +4,7 @@ import { separaItensChecados } from "./edit-check-list.js";
 import { validaData } from "./valida-data.js"
 import { editaTudo } from "./edita-card.js";
 
-export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoChecados, data, dataEdicao) {
+export function criarCard(titulo, conteudo, cursor, itensChecados, data, dataEdicao) {
    /*  divFilha.addEventListener("change", (e) => {
         dadosDoCard.conteudo = e.target.textContent;
         salvarEdicao(dadosDoCard);
@@ -12,17 +12,13 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
 
 
 
-    let checkList = montaCheckList(itensChecados, itensNaoChecados)
+    let checkList = montaCheckList(itensChecados)
 
    
     let div = document.createElement("div");
     div.classList.add("post-it");
 
-    let salvarEdicao = document.createElement("p");
-    salvarEdicao.classList.add("botao-edicao-card");
-    salvarEdicao.textContent = "Salvar";
-    salvarEdicao.addEventListener("click", editaTudo);
-
+    
     let divtexto = document.createElement("div");
     divtexto.classList.add("textos");
 
@@ -93,8 +89,6 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
     div.appendChild(checkList);
 
     div.appendChild(pData);
-
-    div.appendChild(salvarEdicao);
 
     div.appendChild(pDataEdicao);
     

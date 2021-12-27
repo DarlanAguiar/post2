@@ -39,6 +39,6 @@ export const editaTudo = (alvo) => {
 
     let checkListSeparado = separaItensChecados(checkList);
 
-    salvarEdicao(id, titulo, conteudo, checkListSeparado[0], checkListSeparado[1], data, dataAtual);
+    salvarEdicao(id, titulo, conteudo, checkListSeparado, data, dataAtual);
 
 }
