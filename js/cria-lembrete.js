@@ -1,8 +1,16 @@
 import { montaCheckList } from "./monta-check.js";
 import { salvarEdicao, removerItem } from "./index2.js";
 import { separaItensChecados } from "./edit-check-list.js";
+import { validaData } from "./valida-data.js"
+import { editaTudo } from "./edita-card.js";
 
 export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoChecados, data, dataEdicao) {
+   /*  divFilha.addEventListener("change", (e) => {
+        dadosDoCard.conteudo = e.target.textContent;
+        salvarEdicao(dadosDoCard);
+    }); */
+
+
 
     let checkList = montaCheckList(itensChecados, itensNaoChecados)
 
@@ -14,7 +22,6 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
     salvarEdicao.classList.add("botao-edicao-card");
     salvarEdicao.textContent = "Salvar";
     salvarEdicao.addEventListener("click", editaTudo);
-
 
     let divtexto = document.createElement("div");
     divtexto.classList.add("textos");
@@ -32,6 +39,12 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
     h4titulo.classList.add("filtrar");
     h4titulo.setAttribute("data-id", cursor.value.id);
     h4titulo.setAttribute("contenteditable", true)
+    h4titulo.addEventListener("blur", (e)=>{
+        let filho = e.target.parentNode
+        let alvoPai = filho.parentNode;
+    
+        editaTudo(alvoPai);
+    });
     
     
 
@@ -41,13 +54,26 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
     pConteudo.textContent = conteudo;
     pConteudo.setAttribute("data-id", cursor.value.id);
     pConteudo.setAttribute("contenteditable", true);
+    pConteudo.addEventListener("blur", (e)=>{
+        let filho = e.target.parentNode
+        let alvoPai = filho.parentNode;
+    
+        editaTudo(alvoPai);
+    });
   
-    let divBotoes = document.createElement("div");
-    divBotoes.classList.add("botao-post-it");
+    /* let divBotoes = document.createElement("div");
+    divBotoes.classList.add("botao-post-it"); */
     
     let pData = document.createElement("p");
     pData.classList.add("data-card");
     pData.setAttribute("contenteditable", true);
+    pData.addEventListener("blur", (e)=>{
+        let filho = e.target.parentNode
+        let alvoPai = filho.parentNode;
+    
+        editaTudo(filho);
+    });
+    
     pData.textContent = data;
 
     let pDataEdicao = document.createElement("p");
@@ -77,41 +103,27 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, itensNaoCheca
 }
 
 
-const editaTudo = (e) => {
-    let alvo = e.target.parentNode
-
-    let id = alvo.querySelector(".botao-cancelar").dataset.id;
-    let titulo = alvo.querySelector("h4").textContent;
-    let conteudo = alvo.querySelector(".texto").textContent;
-    let data = alvo.querySelector(".data-card").textContent;
-
-
-
-
-    var dataED = new Date();
-    var dia = String(dataED. getDate()). padStart(2 ,'0');
-    var mes = String(dataED. getMonth() + 1). padStart(2, '0');
-    var ano = dataED.getFullYear();
-    var hora = dataED.getHours();
-    var minutos = dataED.getMinutes();
-    var dataAtual =`Editado ${dia}/${mes}/${ano} às ${hora}:${minutos}`;
-    
-
-
-
-
-    let checkList = alvo.querySelectorAll(".card-item-check");
-
-    let checkListSeparado = separaItensChecados(checkList);
-
-    salvarEdicao(id, titulo, conteudo, checkListSeparado[0], checkListSeparado[1], data, dataAtual);
-
-}
-
-
 const esmaecerItem = (evento) =>{
     const paiDoAlvo = evento.target.parentNode;
     const voDoalvo = paiDoAlvo.parentNode;
     
     voDoalvo.classList.add("esmaecer");
+}
+
+
+
+export const adiocionaErroNaData = (alvo) => {
+
+    const textoDeErro = document.createElement("p");
+    textoDeErro.classList.add("texto-erro-data");
+    textoDeErro.textContent = 'Formato aceito 01-01-2001'
+
+    const local = alvo.querySelector(".card-div-checar")
+
+    const mudaCoraParaVermelho = alvo.querySelector(".data-card");
+    mudaCoraParaVermelho.classList.add("texto-vermelho");
+
+    local.appendChild(textoDeErro);
+
+    console.log(mudaCoraParaVermelho)
 }

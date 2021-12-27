@@ -1,3 +1,5 @@
+import { editaTudo } from "./edita-card.js";
+
 export const montaCheckList = (itensChecados, itensNaoChecados) => {
 
     let divCheck = document.createElement("div")
@@ -19,6 +21,14 @@ export const montaCheckList = (itensChecados, itensNaoChecados) => {
         pTexto.setAttribute("contenteditable", true);
         pTexto.setAttribute("data-checado", 1);
         pTexto.textContent = elementchecado;
+        pTexto.addEventListener("blur", (e)=>{
+            let filho = e.target.parentNode
+            let pai = filho.parentNode;
+            let alvoVo = pai.parentNode;
+        
+            editaTudo(alvoVo);
+        });
+        
        
 
         let divBotoesCheck = document.createElement("div");
@@ -27,10 +37,27 @@ export const montaCheckList = (itensChecados, itensNaoChecados) => {
         let pRiscar = document.createElement("p");
         pRiscar.classList.add("card-riscar-check");
         pRiscar.addEventListener("click", riscaCheckCard);
+        pRiscar.addEventListener("click", (e)=>{
+            let filho = e.target.parentNode
+            let pai = filho.parentNode;
+            let vo = pai.parentNode;
+            let alvoBisavo = vo.parentNode;
+            
+            editaTudo(alvoBisavo);
+        });
 
         let pApagar = document.createElement("p");
         pApagar.classList.add("card-apagar-check")
-        pApagar.addEventListener("click", removeCheckCard);
+        pApagar.addEventListener("click", (e)=>{
+            let filho = e.target.parentNode
+            let pai = filho.parentNode;
+            let vo = pai.parentNode;
+            let alvoBisavo = vo.parentNode;
+            removeCheckCard(e)
+            editaTudo(alvoBisavo);
+        });
+
+        
 
         divBotoesCheck.appendChild(pRiscar);
         divBotoesCheck.appendChild(pApagar);
@@ -53,11 +80,14 @@ export const montaCheckList = (itensChecados, itensNaoChecados) => {
         pTexto.setAttribute("contenteditable", true);
         pTexto.setAttribute("data-checado", 0);
         pTexto.textContent = elementoNChecado;
-        pTexto.addEventListener("change", (e)=> {
-            let pai = e.parentNode;
-            console.log("oi")
-        }
-        )
+        pTexto.addEventListener("blur", (e)=>{
+            let filho = e.target.parentNode
+            let pai = filho.parentNode;
+            let alvoVo = pai.parentNode;
+        
+            editaTudo(alvoVo);
+        });
+        
        
 
         let divBotoesCheck = document.createElement("div");
@@ -66,10 +96,25 @@ export const montaCheckList = (itensChecados, itensNaoChecados) => {
         let pRiscar = document.createElement("p");
         pRiscar.classList.add("card-riscar-check");
         pRiscar.addEventListener("click", riscaCheckCard);
+        pRiscar.addEventListener("click", (e)=>{
+            let filho = e.target.parentNode
+            let pai = filho.parentNode;
+            let vo = pai.parentNode;
+            let alvoBisavo = vo.parentNode;
+            
+            editaTudo(alvoBisavo);
+        });
 
         let pApagar = document.createElement("p");
         pApagar.classList.add("card-apagar-check")
-        pApagar.addEventListener("click", removeCheckCard);
+        pApagar.addEventListener("click", (e)=>{
+            let filho = e.target.parentNode
+            let pai = filho.parentNode;
+            let vo = pai.parentNode;
+            let alvoBisavo = vo.parentNode;
+            removeCheckCard(e)
+            editaTudo(alvoBisavo);
+        });
 
         divBotoesCheck.appendChild(pRiscar);
         divBotoesCheck.appendChild(pApagar);

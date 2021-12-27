@@ -317,21 +317,21 @@ section>.post-it{
 
 section>.post-it:nth-child(even){
     background-image: linear-gradient(#F1D904, #F1D904);
-    transform:rotate(3deg);
+    transform:rotate(1deg);
     position: relative;
     z-index: 1;
 }
 
 section .post-it:nth-child(3n){
     background-image: linear-gradient(#05C8E6, #05C8E6);
-    transform:rotate(-2deg);
+    transform:rotate(-1deg);
     position: relative;
     z-index: 1;
 }
 
 section .post-it:nth-child(5n){
     background-image: linear-gradient(#BDE43B, #BDE43B);
-    transform:rotate(-4deg);
+    transform:rotate(-1deg);
     position: relative;
     z-index: 1;
 }
@@ -382,6 +382,8 @@ h4{
     
     content: x;
 }
+
+
   
 
 .botao-post-it{
@@ -475,4 +477,18 @@ a{
            
     }
 
+}
+
+.texto-vermelho{
+    color: red;
+    text-shadow: 0 0 2px white;
+    font-weight: bold;
+}
+
+.texto-erro-data{
+    
+   
+    font-size: .6em;
+    color: red;
+    text-shadow: 0 0 3px white;
 }

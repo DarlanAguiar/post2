@@ -3,6 +3,7 @@ import { criarCard } from "./cria-lembrete.js";
 import {separaItensChecados} from "./edit-check-list.js"
 
 
+
 // Salvar automaticamente
 // Consertar o onupgradeneeded
 // Enter para adicionar um novo item
@@ -107,7 +108,6 @@ export const removerItem = (eventoClick) => {
 
     setTimeout(function(){
         
-    
         const localId = Number(eventoClick.target.getAttribute("data-id"));
     
         let localParaAdicionar = bancoDeDados.transaction([nomeDaLista], "readwrite");
