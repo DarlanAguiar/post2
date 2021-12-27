@@ -480,8 +480,8 @@ a{
 }
 
 .texto-vermelho{
-    color: red;
-    text-shadow: 0 0 2px white;
+    color: rgb(255, 255, 255);;
+    text-shadow: 0 0 2px rgb(0, 0, 0);
     font-weight: bold;
 }
 
@@ -489,6 +489,6 @@ a{
     
    
     font-size: .6em;
-    color: red;
-    text-shadow: 0 0 3px white;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 3px rgb(0, 0, 0);
 }
