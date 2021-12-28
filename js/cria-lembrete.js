@@ -1,17 +1,9 @@
 import { montaCheckList } from "./monta-check.js";
-import { salvarEdicao, removerItem } from "./index2.js";
-import { separaItensChecados } from "./edit-check-list.js";
-import { validaData } from "./valida-data.js"
+import { removerItem } from "./index2.js";
 import { editaTudo } from "./edita-card.js";
 
 export function criarCard(titulo, conteudo, cursor, itensChecados, data, dataEdicao) {
-   /*  divFilha.addEventListener("change", (e) => {
-        dadosDoCard.conteudo = e.target.textContent;
-        salvarEdicao(dadosDoCard);
-    }); */
-
-
-
+   
     let checkList = montaCheckList(itensChecados)
 
    
@@ -43,7 +35,6 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, data, dataEdi
     });
     
     
-
     let pConteudo = document.createElement("p");
     pConteudo.classList.add("texto");
     pConteudo.classList.add("filtrar");
@@ -57,8 +48,6 @@ export function criarCard(titulo, conteudo, cursor, itensChecados, data, dataEdi
         editaTudo(alvoPai);
     });
   
-    /* let divBotoes = document.createElement("div");
-    divBotoes.classList.add("botao-post-it"); */
     
     let pData = document.createElement("p");
     pData.classList.add("data-card");

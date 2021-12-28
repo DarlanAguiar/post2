@@ -12,12 +12,10 @@ export const validaData = (data) => {
 
     if(expressao.test(data)){
         
-        console.log("correto")
         return true;
         
     }else{
 
-        console.log("errado")
         return false
     }
    

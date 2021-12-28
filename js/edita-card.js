@@ -20,7 +20,6 @@ export const editaTudo = (alvo) => {
         }
     }
 
-
     let id = alvo.querySelector(".botao-cancelar").dataset.id;
     let titulo = alvo.querySelector("h4").textContent;
     let conteudo = alvo.querySelector(".texto").textContent;

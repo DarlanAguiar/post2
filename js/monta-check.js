@@ -5,12 +5,7 @@ export const montaCheckList = (itensChecados) => {
     let divCheck = document.createElement("div");
     divCheck.classList.add("card-div-checar");
 
-    console.log(itensChecados);
-
-    
-
-
-    
+       
     itensChecados.forEach(elementchecado => {
 
         if(elementchecado.checado == true){
