@@ -91,17 +91,20 @@ body{
 .div-checar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
     margin-bottom: 4px;
 }
 
 .div-Botoes-input{
+    width: 30%;
     display: flex;
-    flex-wrap: wrap;
+    
 }
 
 .riscar-input{
     width: 16px;
+    max-height: 16px;
     margin-left: 5px;
     box-shadow: 0 0 2px black;
     text-align: center;
@@ -122,6 +125,7 @@ body{
 
 .apagar-input{
     width: 16px;
+    max-height: 16px;
     margin-left: 5px;
     box-shadow: 0 0 2px black;
     text-align: center;

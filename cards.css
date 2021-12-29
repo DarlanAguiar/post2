@@ -1,20 +1,20 @@
 .card-div-checar-item{
     display: flex;
     justify-content: space-between;
-}
-
-.card-div-checar-item{
+    align-items: center;
     font-size: .95rem;
     margin-bottom: 3px;
-}
 
+}
 
 .card-botoes-check{
     display: flex;
+    justify-content: space-between;
 }
 
 .card-riscar-check{
     width: 15px;
+    max-height: 15px;
     margin-left: 5px;
     box-shadow: 0 0 2px black;
     text-align: center;
@@ -28,6 +28,7 @@
 }
 .card-apagar-check{
     margin-left: 5px;
+    max-height: 15px;
     width: 15px;
     margin-left: 5px;
     box-shadow: 0 0 2px black;
