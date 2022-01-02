@@ -67,18 +67,25 @@ export function criarCard(
   pDataEdicao.classList.add("data-card-edicao");
   pDataEdicao.textContent = dataEdicao;
 
+  let erroData = document.createElement("div");
+  erroData.classList.add("card-div-checar-erro-data");
+
   divtexto.appendChild(divFilha);
   divtexto.appendChild(h4titulo);
 
   divtexto.appendChild(pConteudo);
-
+  
+  
   div.appendChild(divtexto);
-
+  
   div.appendChild(checkList);
+  
+  div.appendChild(erroData);
 
   div.appendChild(pData);
 
   div.appendChild(pDataEdicao);
+
 
   return div;
 }
@@ -95,10 +102,12 @@ export const adiocionaErroNaData = (alvo) => {
   textoDeErro.classList.add("texto-erro-data");
   textoDeErro.textContent = "Formato aceito 01-01-2001";
 
-  const local = alvo.querySelector(".card-div-checar");
+  const local = alvo.querySelector(".card-div-checar-erro-data");
 
   const mudaCoraParaVermelho = alvo.querySelector(".data-card");
   mudaCoraParaVermelho.classList.add("texto-vermelho");
-  
+
+  local.innerHTML = "";
+
   local.appendChild(textoDeErro);
 };

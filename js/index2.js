@@ -62,16 +62,6 @@ function salvarDados(conteudoTitulo, lembrete, itens, data, dataEdicao) {
   mostrarCardNaTela();
 }
 
-// itensCheck = ['um check', 'dois check'];
-// itensNaoCheck = ['tres check', 'quatro check'];
-
-// itens = [
-//     {texto: 'um check', checked: true},
-//     {texto: 'dois check', checked: true},
-//     {texto: 'tres check', checked: false},
-//     {texto: 'quatro check', checked: false},
-// ];
-
 export function salvarEdicao(id, titulo, conteudo, checados, data, dataAtual) {
   let numeroId = Number(id);
 
