@@ -485,7 +485,7 @@ a{
 
 .texto-vermelho{
     color: rgb(255, 255, 255);;
-    text-shadow: 0 0 2px rgb(0, 0, 0);
+    text-shadow: 0 0 3px rgb(255, 0, 0);
     font-weight: bold;
 }
 
