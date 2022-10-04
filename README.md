@@ -1,2 +1,15 @@
-# post2
- post it com check list
+
+<center>
+  <img src="https://lh3.googleusercontent.com/C-UGY-YGCB91ApS6EMDguQVaRuH1pnFUx_l64DFfVKv55TNj4uPB1mkz_7wfPj_oTPd2Ni2Otw0zVmhPzq8JDlQRV-Nb-i3BgsFtQcne4NTuJfA15CV476d_hbwTPqQYGyvEGB-aDrPCRX-YYS8qLMpm2KqqYwY2ylZhj5adeb8D41C964QMQDrtcQJ00KlqYzYggWc_yZu4qiLgIv2FJwq4owBMVKJoLOEADwvkqv3Zr_ceCAnSdtRvMjmbclQO1mcNbVv9xN0IoA6c0Pr3eCvGgbsVTq6p8r1IdmN7w17RWbL-Ct7TYtPiJxPtheAogAK142WuAT8KaLuIf3ry15fTxc7l53TtA-vMfcC386FMUKTg7sO9K3FI1dNyYZDHlD2PNbALiFkIUIV9km1FMeQPZqaL4fahr8G-OppJJfrYRuI8P-TcUByJu6ukh7IXwFVXS1q0eCfXNLaJW5Zf9_-qiFL7DSJDxlINSNh4voQgutAeBtob0w-PGs-J4TxtcKYzbueP_SWf8CvzGkwGG13elGMQW_Fc1J0iZ4Alqet1Hsn0xuXO3LpqzZXxlKlfQG3-CN2eTHY0NxQ9gttu587TvA4wB8PjQCAJZXBE-xxD8LTQIy9nHC_E0mq9NnlgxgpS5c7iUx3INHNobhPZOecVZ3puJW8tQEAzxtg3f5f6R8eewGzASbhzQKo2aELH8_aGyiDjVjnLS_dATN0Eb26pPPEOx-Pl8zt4bnSiqTvyv88ThUEkxb0F-gTo2SX20Z-QTGAguQIoBZ5PYHEpThzKnP9wxqWWRGRJIC6swhUvtpWV945vSuSNyWyqj3Y3wQJt1h9eHvRWTbPFVe2LlLCm6vRJoq8aQ2W8QUoaMKD-v9xN000x4jjQG2UAZhecpjBIaAv76vRgG3hR8CJmw_5oYH3Gbd7qbuuhDQy2ew=w892-h741-no?authuser=0" />
+</center>
+
+---
+
+# Post-It
+ Uma página de recados com dados salvos no IndexedDB, com busca de recados.
+ 
+ tecnologias utilizadas
+ Javascript vanilla
+ HTML
+ CSS
+ 
